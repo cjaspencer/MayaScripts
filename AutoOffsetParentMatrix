@@ -1,0 +1,27 @@
+// This is written in MEL - Maya's native programming language
+// This will take the translation and rotation data and set it to 0
+// for all the selected objects. Helps speed up rigging.
+
+// Array Variable to store selected items in
+string $selected[] = `ls -sl`;
+
+// For loop to run each item in the selected array    
+    for ($item in $selected)
+{ 
+        // This connects the Matrix node to the offsetParentMatrix which transfers the data
+        // for all the translation and rotation entries of the selected items
+        connectAttr -force ($item + ".matrix") ($item + ".offsetParentMatrix");
+
+        // This disconnects the above connection
+        disconnectAttr ($item + ".matrix") ($item + ".offsetParentMatrix");
+        
+        // The following resets the translation to 0 for X, Y, Z
+        setAttr ($item + ".translateX") 0;
+        setAttr ($item + ".translateY") 0;
+        setAttr ($item + ".translateZ") 0;
+        
+        // The following sets the rotation to 0 for X, Y, Z
+        setAttr ($item + ".rotateX") 0;
+        setAttr ($item + ".rotateY") 0;
+        setAttr ($item + ".rotateZ") 0;
+}
