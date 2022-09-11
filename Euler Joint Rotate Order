@@ -2,6 +2,7 @@
 jointList = cmds.ls(type="joint")
 
 # For loop that runs the command to set the Euler rotate order.
+# Can be substituted for different attributes.
 # xyz = 0 yzx = 1 xyz = 2 xzy = 3 yxz = 4 zyx = 5
 for joint in joinList:
     cmds.setAttr(joint + ".rotateOrder", 0)
