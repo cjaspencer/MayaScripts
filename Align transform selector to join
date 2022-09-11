@@ -1,0 +1,4 @@
+// MEL script that appears to not be a menu command for, at least an easy one.
+// Aligns the transform selector to align with the join orientation.
+// This cleans up the rig if you manually rotate the world axis.
+joint -e -zso
